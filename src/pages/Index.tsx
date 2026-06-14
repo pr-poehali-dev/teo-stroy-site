@@ -361,7 +361,8 @@ const Index = () => {
       <footer className="bg-primary text-primary-foreground py-10">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <img src="https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/bucket/ea2a6d9d-ca6e-49de-8172-b3cd58551695.png" alt="ТЕО-строй" className="h-9 w-auto bg-white rounded px-3 py-1.5" />
-          <div className="text-sm text-primary-foreground/70">© 2008–2026 ТЕО-строй. Строительство под ключ в Красноярске.</div>
+          <div className="text-sm text-primary-foreground/70">© 2008–2026 ТЕО-строй. Строительство под ключ в Екатеринбурге.</div>
+          <a href="#" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors underline underline-offset-4">Политика обработки персональных данных</a>
         </div>
       </footer>
     </div>
