@@ -16,7 +16,7 @@ const NAV = [
 
 const SERVICES = [
   { icon: 'Home', title: 'Строительство домов', desc: 'Коттеджи и загородные дома под ключ из газобетона, кирпича и дерева.', price: 'от 28 000 ₽/м²', link: null },
-  { icon: 'Building2', title: 'Быстровозводимые конструкции', desc: 'Склады, ангары, торговые павильоны и производственные здания из металлоконструкций.', price: 'от 8 500 ₽/м²', link: '/fast-build' },
+  { icon: 'Building2', title: 'Быстровозводимые конструкции', desc: 'Склады, ангары, торговые павильоны и производственные здания из металлоконструкций.', price: 'от 18 500 ₽/м³', link: '/fast-build' },
   { icon: 'Layers', title: 'Отделочные работы', desc: 'Стяжка, штукатурка, плитка, потолки и финишная отделка.', price: 'от 3 200 ₽/м²', link: '/finishing' },
   { icon: 'HardHat', title: 'Фасадные работы', desc: 'Утепление, вентфасады, штукатурные системы и облицовка.', price: 'от 2 100 ₽/м²', link: null },
   { icon: 'Wrench', title: 'Инженерные сети', desc: 'Электрика, водоснабжение, отопление и вентиляция.', price: 'от 1 800 ₽/м²', link: null },
@@ -30,10 +30,10 @@ const PORTFOLIO = [
 ];
 
 const TEAM = [
-  { name: 'Андрей Теплов', role: 'Генеральный директор', exp: '18 лет в строительстве' },
-  { name: 'Марина Орлова', role: 'Главный инженер', exp: 'Проектирование и контроль' },
-  { name: 'Сергей Гущин', role: 'Прораб', exp: '120+ сданных объектов' },
-  { name: 'Елена Краско', role: 'Дизайнер интерьеров', exp: 'Авторские проекты' },
+  { name: 'Христо Теодоракис', role: 'Генеральный директор', exp: '18 лет в строительстве', photo: 'https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/bucket/de2a8129-8655-4487-8318-cfa62b1373d2.jpg' },
+  { name: 'Марина Орлова', role: 'Главный инженер', exp: 'Проектирование и контроль', photo: 'https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/files/fec8f7a1-35f2-43c4-9d09-b041cf9e4683.jpg' },
+  { name: 'Сергей Гущин', role: 'Прораб', exp: '120+ сданных объектов', photo: 'https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/files/5e0f6012-7a08-453d-826b-cb2189c55021.jpg' },
+  { name: 'Елена Краско', role: 'Дизайнер интерьеров', exp: 'Авторские проекты', photo: 'https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/files/4fbff22d-e8c0-4f62-8323-aa2acd62f5e3.jpg' },
 ];
 
 const REVIEWS = [
@@ -44,7 +44,7 @@ const REVIEWS = [
 
 const CALC_TYPES = [
   { id: 'house', label: 'Дом под ключ', base: 28000 },
-  { id: 'repair', label: 'Ремонт квартиры', base: 6500 },
+  { id: 'hangar', label: 'Возведение ангара', base: 18500 },
   { id: 'finish', label: 'Отделка', base: 3200 },
   { id: 'facade', label: 'Фасад', base: 2100 },
 ];
@@ -297,14 +297,17 @@ const Index = () => {
           <h2 className="font-display font-bold uppercase text-4xl md:text-5xl mt-5">Кто строит ваш объект</h2>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {TEAM.map((m, i) => (
-              <div key={m.name} className="bg-card p-8 hover-lift hover:border-accent border border-transparent">
-                <div className="w-16 h-16 grid place-items-center bg-secondary text-primary font-display font-bold text-2xl">
-                  {m.name.split(' ').map((w) => w[0]).join('')}
+              <div key={m.name} className="bg-card hover-lift hover:border-accent border border-transparent overflow-hidden">
+                <div className="relative w-full aspect-square overflow-hidden">
+                  <img src={m.photo} alt={m.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
+                  <div className="absolute bottom-3 left-3 font-display font-bold text-4xl text-white/20">0{i + 1}</div>
                 </div>
-                <div className="font-display font-bold text-5xl text-stroke mt-6">0{i + 1}</div>
-                <h3 className="font-display font-semibold text-xl mt-2">{m.name}</h3>
-                <div className="text-accent font-medium text-sm mt-1">{m.role}</div>
-                <div className="text-muted-foreground text-sm mt-1">{m.exp}</div>
+                <div className="p-6">
+                  <h3 className="font-display font-semibold text-lg leading-tight">{m.name}</h3>
+                  <div className="text-accent font-medium text-sm mt-1">{m.role}</div>
+                  <div className="text-muted-foreground text-sm mt-1">{m.exp}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -351,6 +354,13 @@ const Index = () => {
                   </div>
                 </div>
               ))}
+              <button onClick={() => navigate('/requisites')} className="flex gap-4 group w-full text-left">
+                <div className="shrink-0 w-12 h-12 grid place-items-center bg-accent text-accent-foreground group-hover:bg-accent/80 transition-colors"><Icon name="CreditCard" size={22} /></div>
+                <div>
+                  <div className="font-display font-semibold text-lg group-hover:text-accent transition-colors">Карточка предприятия</div>
+                  <div className="text-sm text-muted-foreground">ИНН, КПП, ОГРН, банковские реквизиты</div>
+                </div>
+              </button>
             </div>
           </div>
 

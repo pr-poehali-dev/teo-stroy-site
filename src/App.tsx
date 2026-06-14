@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
 import FastBuild from "./pages/FastBuild";
 import Finishing from "./pages/Finishing";
+import Requisites from "./pages/Requisites";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/fast-build" element={<FastBuild />} />
           <Route path="/finishing" element={<Finishing />} />
+          <Route path="/requisites" element={<Requisites />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
