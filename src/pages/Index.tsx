@@ -71,13 +71,12 @@ const Index = () => {
       {/* Header */}
       <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
         <div className="container flex items-center justify-between h-16">
-          <button onClick={() => scrollTo('hero')} className="flex items-center gap-2">
-            <div className="w-9 h-9 grid place-items-center bg-primary text-primary-foreground font-display font-bold text-lg">Т</div>
-            <span className="font-display font-semibold text-xl tracking-wide">ТЕО<span className="text-primary">-строй</span></span>
+          <button onClick={() => scrollTo('hero')} className="flex items-center">
+            <img src="https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/bucket/ea2a6d9d-ca6e-49de-8172-b3cd58551695.png" alt="ТЕО-строй" className="h-10 w-auto" />
           </button>
           <nav className="hidden lg:flex items-center gap-7">
             {NAV.map((n) => (
-              <button key={n.id} onClick={() => scrollTo(n.id)} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <button key={n.id} onClick={() => scrollTo(n.id)} className="text-sm text-muted-foreground hover:text-accent transition-colors">
                 {n.label}
               </button>
             ))}
@@ -91,16 +90,16 @@ const Index = () => {
       {/* Hero */}
       <section id="hero" className="relative min-h-screen flex items-end overflow-hidden">
         <img src="https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/files/40804c58-367f-46ee-a1f6-47a193dceb34.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
-        <div className="container relative pb-20 pt-32">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/40" />
+        <div className="container relative pb-20 pt-32 text-primary-foreground">
           <div className="flex items-center gap-2 mb-6 animate-fade-up">
-            <span className="h-px w-10 bg-primary" />
-            <span className="text-primary font-display tracking-[0.2em] text-sm uppercase">Строим с 2008 года</span>
+            <span className="h-px w-10 bg-accent" />
+            <span className="text-accent font-display tracking-[0.2em] text-sm uppercase">Строим с 2008 года</span>
           </div>
           <h1 className="font-display font-bold uppercase leading-[0.95] text-5xl md:text-7xl lg:text-8xl max-w-4xl animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            Строим то,<br />что <span className="text-primary">останется</span><br />надолго
+            Строим то,<br />что <span className="text-accent">останется</span><br />надолго
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <p className="mt-6 text-lg text-primary-foreground/80 max-w-xl animate-fade-up" style={{ animationDelay: '0.2s' }}>
             Полный цикл строительства и ремонта под ключ. Фиксированная смета, договор и гарантия до 5 лет.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
@@ -114,8 +113,8 @@ const Index = () => {
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl animate-fade-up" style={{ animationDelay: '0.4s' }}>
             {[['16', 'лет на рынке'], ['340+', 'объектов сдано'], ['98%', 'в срок'], ['5 лет', 'гарантия']].map(([n, l]) => (
               <div key={l}>
-                <div className="font-display font-bold text-4xl text-primary">{n}</div>
-                <div className="text-sm text-muted-foreground mt-1">{l}</div>
+                <div className="font-display font-bold text-4xl text-accent">{n}</div>
+                <div className="text-sm text-primary-foreground/70 mt-1">{l}</div>
               </div>
             ))}
           </div>
@@ -170,13 +169,13 @@ const Index = () => {
           <h2 className="font-display font-bold uppercase text-4xl md:text-5xl mt-5">Что мы делаем</h2>
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {SERVICES.map((s) => (
-              <div key={s.title} className="bg-card p-8 hover-lift hover:border-primary border border-transparent group">
+              <div key={s.title} className="bg-card p-8 hover-lift hover:border-accent border border-transparent group">
                 <div className="w-12 h-12 grid place-items-center bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Icon name={s.icon} size={24} />
                 </div>
                 <h3 className="font-display font-semibold text-xl mt-5">{s.title}</h3>
                 <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{s.desc}</p>
-                <div className="mt-5 font-display font-bold text-primary text-lg">{s.price}</div>
+                <div className="mt-5 font-display font-bold text-accent text-lg">{s.price}</div>
               </div>
             ))}
           </div>
@@ -195,9 +194,9 @@ const Index = () => {
             {PORTFOLIO.map((p) => (
               <div key={p.title} className="relative group overflow-hidden bg-card">
                 <img src={p.img} alt={p.title} className="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-6">
-                  <div className="text-primary font-display tracking-wide text-sm uppercase">{p.tag}</div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 p-6 text-primary-foreground">
+                  <div className="text-accent font-display tracking-wide text-sm uppercase">{p.tag}</div>
                   <div className="font-display font-semibold text-2xl mt-1">{p.title}</div>
                 </div>
               </div>
@@ -220,7 +219,7 @@ const Index = () => {
                 <label className="font-display font-semibold uppercase tracking-wide text-sm text-muted-foreground">Тип работ</label>
                 <div className="mt-3 grid grid-cols-2 gap-2">
                   {CALC_TYPES.map((t) => (
-                    <button key={t.id} onClick={() => setType(t)} className={`p-4 text-left border transition-colors ${type.id === t.id ? 'border-primary bg-primary/10 text-foreground' : 'border-border text-muted-foreground hover:border-primary/50'}`}>
+                    <button key={t.id} onClick={() => setType(t)} className={`p-4 text-left border transition-colors ${type.id === t.id ? 'border-accent bg-accent/10 text-foreground' : 'border-border text-muted-foreground hover:border-accent/50'}`}>
                       <div className="font-display font-semibold">{t.label}</div>
                       <div className="text-xs mt-1 opacity-70">от {t.base.toLocaleString('ru')} ₽/м²</div>
                     </button>
@@ -232,7 +231,7 @@ const Index = () => {
                 <label className="font-display font-semibold uppercase tracking-wide text-sm text-muted-foreground">Уровень отделки</label>
                 <div className="mt-3 grid grid-cols-3 gap-2">
                   {CALC_LEVELS.map((l) => (
-                    <button key={l.id} onClick={() => setLevel(l)} className={`py-3 font-display font-semibold border transition-colors ${level.id === l.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground hover:border-primary/50'}`}>
+                    <button key={l.id} onClick={() => setLevel(l)} className={`py-3 font-display font-semibold border transition-colors ${level.id === l.id ? 'border-accent bg-accent text-accent-foreground' : 'border-border text-muted-foreground hover:border-accent/50'}`}>
                       {l.label}
                     </button>
                   ))}
@@ -242,14 +241,14 @@ const Index = () => {
               <div>
                 <div className="flex items-end justify-between">
                   <label className="font-display font-semibold uppercase tracking-wide text-sm text-muted-foreground">Площадь</label>
-                  <span className="font-display font-bold text-2xl text-primary">{area} м²</span>
+                  <span className="font-display font-bold text-2xl text-accent">{area} м²</span>
                 </div>
-                <input type="range" min={20} max={500} step={5} value={area} onChange={(e) => setArea(+e.target.value)} className="w-full mt-4 accent-primary h-2" />
+                <input type="range" min={20} max={500} step={5} value={area} onChange={(e) => setArea(+e.target.value)} className="w-full mt-4 accent-accent h-2" />
                 <div className="flex justify-between text-xs text-muted-foreground mt-1"><span>20 м²</span><span>500 м²</span></div>
               </div>
 
               <button onClick={() => setMaterials(!materials)} className="flex items-center gap-3">
-                <span className={`w-12 h-6 rounded-full relative transition-colors ${materials ? 'bg-primary' : 'bg-border'}`}>
+                <span className={`w-12 h-6 rounded-full relative transition-colors ${materials ? 'bg-accent' : 'bg-border'}`}>
                   <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-background transition-all ${materials ? 'left-6' : 'left-0.5'}`} />
                 </span>
                 <span className="font-display font-medium">Учитывать стоимость материалов</span>
@@ -259,14 +258,14 @@ const Index = () => {
             {/* Result */}
             <div className="bg-primary text-primary-foreground p-8 md:p-10 flex flex-col">
               <div className="font-display uppercase tracking-wide text-sm opacity-80">Предварительная стоимость</div>
-              <div className="font-display font-bold text-5xl md:text-6xl mt-2 leading-none">{total.toLocaleString('ru')} ₽</div>
+              <div className="font-display font-bold text-5xl md:text-6xl mt-2 leading-none text-accent">{total.toLocaleString('ru')} ₽</div>
               <div className="mt-8 space-y-3 text-sm border-t border-primary-foreground/20 pt-6">
                 <Row label="Работы" value={`${Math.round(work).toLocaleString('ru')} ₽`} />
                 {materials && <Row label="Материалы" value={`${Math.round(matCost).toLocaleString('ru')} ₽`} />}
                 <Row label="Площадь" value={`${area} м²`} />
                 <Row label="Класс" value={level.label} />
               </div>
-              <Button onClick={() => scrollTo('contacts')} variant="secondary" className="mt-auto pt-3 font-display tracking-wide h-12 text-base bg-background text-foreground hover:bg-background/90">
+              <Button onClick={() => scrollTo('contacts')} className="mt-auto font-display tracking-wide h-12 text-base bg-accent text-accent-foreground hover:bg-accent/90">
                 Получить точную смету <Icon name="ArrowRight" size={18} className="ml-2" />
               </Button>
             </div>
@@ -281,13 +280,13 @@ const Index = () => {
           <h2 className="font-display font-bold uppercase text-4xl md:text-5xl mt-5">Кто строит ваш объект</h2>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {TEAM.map((m, i) => (
-              <div key={m.name} className="bg-card p-8 hover-lift hover:border-primary border border-transparent">
+              <div key={m.name} className="bg-card p-8 hover-lift hover:border-accent border border-transparent">
                 <div className="w-16 h-16 grid place-items-center bg-secondary text-primary font-display font-bold text-2xl">
                   {m.name.split(' ').map((w) => w[0]).join('')}
                 </div>
                 <div className="font-display font-bold text-5xl text-stroke mt-6">0{i + 1}</div>
                 <h3 className="font-display font-semibold text-xl mt-2">{m.name}</h3>
-                <div className="text-primary font-medium text-sm mt-1">{m.role}</div>
+                <div className="text-accent font-medium text-sm mt-1">{m.role}</div>
                 <div className="text-muted-foreground text-sm mt-1">{m.exp}</div>
               </div>
             ))}
@@ -302,9 +301,9 @@ const Index = () => {
           <h2 className="font-display font-bold uppercase text-4xl md:text-5xl mt-5">Что говорят клиенты</h2>
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {REVIEWS.map((r) => (
-              <div key={r.name} className="bg-card border border-border p-8 hover-lift hover:border-primary">
-                <div className="flex gap-1 text-primary">
-                  {Array.from({ length: r.rating }).map((_, i) => <Icon key={i} name="Star" size={18} className="fill-primary" />)}
+              <div key={r.name} className="bg-card border border-border p-8 hover-lift hover:border-accent">
+                <div className="flex gap-1 text-accent">
+                  {Array.from({ length: r.rating }).map((_, i) => <Icon key={i} name="Star" size={18} className="fill-accent" />)}
                 </div>
                 <p className="mt-5 text-muted-foreground leading-relaxed">«{r.text}»</p>
                 <div className="mt-6 font-display font-semibold">{r.name}</div>
@@ -328,7 +327,7 @@ const Index = () => {
                 ['MapPin', 'г. Красноярск, ул. Строителей, 1', 'Офис и шоурум'],
               ].map(([ic, t, d]) => (
                 <div key={t} className="flex gap-4">
-                  <div className="shrink-0 w-12 h-12 grid place-items-center bg-secondary text-primary"><Icon name={ic} size={22} /></div>
+                  <div className="shrink-0 w-12 h-12 grid place-items-center bg-primary text-primary-foreground"><Icon name={ic} size={22} /></div>
                   <div>
                     <div className="font-display font-semibold text-lg">{t}</div>
                     <div className="text-sm text-muted-foreground">{d}</div>
@@ -342,30 +341,27 @@ const Index = () => {
             <h3 className="font-display font-semibold text-2xl">Оставить заявку</h3>
             <div>
               <label className="text-sm text-muted-foreground">Имя</label>
-              <input className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-primary transition-colors" placeholder="Как к вам обращаться" />
+              <input className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-accent transition-colors" placeholder="Как к вам обращаться" />
             </div>
             <div>
               <label className="text-sm text-muted-foreground">Телефон</label>
-              <input className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-primary transition-colors" placeholder="+7 (___) ___-__-__" />
+              <input className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-accent transition-colors" placeholder="+7 (___) ___-__-__" />
             </div>
             <div>
               <label className="text-sm text-muted-foreground">Что планируете?</label>
-              <textarea rows={3} className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-primary transition-colors resize-none" placeholder="Кратко опишите задачу" />
+              <textarea rows={3} className="mt-2 w-full bg-secondary border border-border px-4 py-3 outline-none focus:border-accent transition-colors resize-none" placeholder="Кратко опишите задачу" />
             </div>
-            <Button className="w-full h-12 font-display tracking-wide text-base">Отправить заявку</Button>
+            <Button className="w-full h-12 font-display tracking-wide text-base bg-accent text-accent-foreground hover:bg-accent/90">Отправить заявку</Button>
             <p className="text-xs text-muted-foreground text-center">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
           </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10">
+      <footer className="bg-primary text-primary-foreground py-10">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 grid place-items-center bg-primary text-primary-foreground font-display font-bold">Т</div>
-            <span className="font-display font-semibold tracking-wide">ТЕО<span className="text-primary">-строй</span></span>
-          </div>
-          <div className="text-sm text-muted-foreground">© 2008–2026 ТЕО-строй. Строительство под ключ в Красноярске.</div>
+          <img src="https://cdn.poehali.dev/projects/38020c7c-aebd-43d2-86be-d035ce339c72/bucket/ea2a6d9d-ca6e-49de-8172-b3cd58551695.png" alt="ТЕО-строй" className="h-9 w-auto bg-white rounded px-3 py-1.5" />
+          <div className="text-sm text-primary-foreground/70">© 2008–2026 ТЕО-строй. Строительство под ключ в Красноярске.</div>
         </div>
       </footer>
     </div>
@@ -374,8 +370,8 @@ const Index = () => {
 
 const SectionLabel = ({ n, text }: { n: string; text: string }) => (
   <div className="flex items-center gap-3">
-    <span className="font-display font-bold text-primary text-lg">{n}</span>
-    <span className="h-px w-8 bg-primary" />
+    <span className="font-display font-bold text-accent text-lg">{n}</span>
+    <span className="h-px w-8 bg-accent" />
     <span className="font-display tracking-[0.2em] text-sm uppercase text-muted-foreground">{text}</span>
   </div>
 );
