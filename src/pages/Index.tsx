@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const NAV = [
   { id: 'about', label: 'О компании' },
@@ -14,12 +15,12 @@ const NAV = [
 ];
 
 const SERVICES = [
-  { icon: 'Home', title: 'Строительство домов', desc: 'Коттеджи и загородные дома под ключ из газобетона, кирпича и дерева.', price: 'от 28 000 ₽/м²' },
-  { icon: 'Paintbrush', title: 'Ремонт квартир', desc: 'Капитальный и косметический ремонт с дизайн-проектом.', price: 'от 6 500 ₽/м²' },
-  { icon: 'Layers', title: 'Отделочные работы', desc: 'Стяжка, штукатурка, плитка, потолки и финишная отделка.', price: 'от 3 200 ₽/м²' },
-  { icon: 'HardHat', title: 'Фасадные работы', desc: 'Утепление, вентфасады, штукатурные системы и облицовка.', price: 'от 2 100 ₽/м²' },
-  { icon: 'Wrench', title: 'Инженерные сети', desc: 'Электрика, водоснабжение, отопление и вентиляция.', price: 'от 1 800 ₽/м²' },
-  { icon: 'Hammer', title: 'Демонтаж', desc: 'Безопасный демонтаж конструкций и вывоз мусора.', price: 'от 900 ₽/м²' },
+  { icon: 'Home', title: 'Строительство домов', desc: 'Коттеджи и загородные дома под ключ из газобетона, кирпича и дерева.', price: 'от 28 000 ₽/м²', link: null },
+  { icon: 'Building2', title: 'Быстровозводимые конструкции', desc: 'Склады, ангары, торговые павильоны и производственные здания из металлоконструкций.', price: 'от 8 500 ₽/м²', link: '/fast-build' },
+  { icon: 'Layers', title: 'Отделочные работы', desc: 'Стяжка, штукатурка, плитка, потолки и финишная отделка.', price: 'от 3 200 ₽/м²', link: '/finishing' },
+  { icon: 'HardHat', title: 'Фасадные работы', desc: 'Утепление, вентфасады, штукатурные системы и облицовка.', price: 'от 2 100 ₽/м²', link: null },
+  { icon: 'Wrench', title: 'Инженерные сети', desc: 'Электрика, водоснабжение, отопление и вентиляция.', price: 'от 1 800 ₽/м²', link: null },
+  { icon: 'Hammer', title: 'Демонтаж', desc: 'Безопасный демонтаж конструкций и вывоз мусора.', price: 'от 900 ₽/м²', link: null },
 ];
 
 const PORTFOLIO = [
@@ -108,7 +109,7 @@ const Index = () => {
             <Button size="lg" onClick={() => scrollTo('calculator')} className="font-display tracking-wide text-base h-12 px-8">
               Рассчитать стоимость <Icon name="ArrowRight" size={18} className="ml-2" />
             </Button>
-            <Button size="lg" variant="outline" onClick={() => scrollTo('portfolio')} className="font-display tracking-wide text-base h-12 px-8">
+            <Button size="lg" onClick={() => scrollTo('portfolio')} className="font-display tracking-wide text-base h-12 px-8 bg-white text-primary hover:bg-white/90">
               Наши работы
             </Button>
           </div>
@@ -170,16 +171,30 @@ const Index = () => {
           <SectionLabel n="02" text="Услуги" />
           <h2 className="font-display font-bold uppercase text-4xl md:text-5xl mt-5">Что мы делаем</h2>
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {SERVICES.map((s) => (
-              <div key={s.title} className="bg-card p-8 hover-lift hover:border-accent border border-transparent group">
-                <div className="w-12 h-12 grid place-items-center bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Icon name={s.icon} size={24} />
+            {SERVICES.map((s) => {
+              const inner = (
+                <>
+                  <div className="w-12 h-12 grid place-items-center bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Icon name={s.icon} size={24} />
+                  </div>
+                  <h3 className="font-display font-semibold text-xl mt-5">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{s.desc}</p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="font-display font-bold text-accent text-lg">{s.price}</span>
+                    {s.link && <span className="text-xs text-muted-foreground group-hover:text-accent transition-colors flex items-center gap-1">Подробнее <Icon name="ArrowRight" size={14} /></span>}
+                  </div>
+                </>
+              );
+              return s.link ? (
+                <Link key={s.title} to={s.link} className="bg-card p-8 hover-lift hover:border-accent border border-transparent group block">
+                  {inner}
+                </Link>
+              ) : (
+                <div key={s.title} className="bg-card p-8 hover-lift hover:border-accent border border-transparent group">
+                  {inner}
                 </div>
-                <h3 className="font-display font-semibold text-xl mt-5">{s.title}</h3>
-                <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{s.desc}</p>
-                <div className="mt-5 font-display font-bold text-accent text-lg">{s.price}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
