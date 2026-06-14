@@ -322,9 +322,9 @@ const Index = () => {
             <p className="text-muted-foreground mt-4 max-w-md">Оставьте заявку — инженер свяжется с вами, рассчитает смету и предложит решение под ваш бюджет.</p>
             <div className="mt-10 space-y-5">
               {[
-                ['Phone', '+7 (391) 000-00-00', 'Ежедневно 9:00–20:00'],
-                ['Mail', 'info@teo-stroy1.ru', 'Ответим в течение часа'],
-                ['MapPin', 'г. Красноярск, ул. Строителей, 1', 'Офис и шоурум'],
+                ['Phone', '+7 343 266 32 99', 'Ежедневно 9:00–20:00'],
+                ['Mail', 'teo.stroy@bk.ru', 'Ответим в течение часа'],
+                ['MapPin', 'г. Екатеринбург, ул. 8 Марта, 120Б, 4 этаж', 'Центральный офис'],
               ].map(([ic, t, d]) => (
                 <div key={t} className="flex gap-4">
                   <div className="shrink-0 w-12 h-12 grid place-items-center bg-primary text-primary-foreground"><Icon name={ic} size={22} /></div>
